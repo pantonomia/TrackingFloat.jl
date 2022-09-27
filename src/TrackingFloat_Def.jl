@@ -1,3 +1,5 @@
+module TrackingFloat
+
 using LinearAlgebra
 
 import Base: +, *, -, / , promote, promote_rule, sqrt, qr, <, cholesky, zero
