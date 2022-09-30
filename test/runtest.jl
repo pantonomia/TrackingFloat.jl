@@ -5,6 +5,8 @@ import Base: +, *, -, / , promote, promote_rule, sqrt, qr, <, cholesky, zero
 
 #test basic operators +, -, *, / for tracking floats
 
+@testset "TrackingFloat.jl" begin
+
 @test v     == TrackingFloat(4,3)           # which we test using the macro @test
 @test v*v   == TrackingFloat(16, 4) 
 @test v - v == TrackingFloat(0, 4) 
@@ -42,7 +44,8 @@ sol2 = TrackingFloat.(F\value.(bt))
 #Which method was able to work with smallest elements?
 getmax.(sol1)
 getmax.(sol2)
-
+  
+end
 
 
 
