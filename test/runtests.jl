@@ -3,14 +3,7 @@ using Test
 using TrackingFloats
 
 #test basic operators +, -, *, / for tracking floats
-
-#Constructor
-aux = 0.0 
-TrackingFloat() = TrackingFloat(aux, aux) 
-TrackingFloat(x) = TrackingFloat(x, aux)  
-TrackingFloat(v::TrackingFloat) = v
-
-@testset "TrackingFloats.jl" begin
+#@testset "TrackingFloats.jl" begin
 
 v = TrackingFloat(1.0) + TrackingFloat(3.0)
   
@@ -32,6 +25,10 @@ vt = At*bt
 @test maximum(abs, v - value.(vt)) < sqrt(eps()) 
 
 # Is promotion working?
+#promote_rule(::Type{T}, ::Type{TrackingFloat}) where {T<:Number} = TrackingFloat
+c = TrackingFloat(1.0, 0) 
+d = 1.0
+c+d
 @test TrackingFloat(1.0, 0) + 2.0 == TrackingFloat(3, 2) 
 
 #solve linear system with backsolve with your TrackingFloat
@@ -41,7 +38,7 @@ AAt = TrackingFloat.(AA) # Convert to TrackingFloat matrix
 #solve linear system with backsolve with your trackingfloat
 sol1 = AAt\bt
 value.(sol1)
-@test maximum(abs, value.(sol1) - AA.\b) < sqrt(eps())
+@test maximum(abs, value.(sol1) - AA\b) < sqrt(eps())
 
 #Try cholesky factorization
 F = cholesky(value.(AAt)) 
@@ -52,7 +49,7 @@ sol2 = TrackingFloat.(F\value.(bt))
 getmax.(sol1)
 getmax.(sol2)
   
-end
+#end
 
 
 
