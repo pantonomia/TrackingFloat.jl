@@ -1,11 +1,10 @@
 using LinearAlgebra
 using Test
-using TrackingFloat
-import Base: +, *, -, / , promote, promote_rule, sqrt, qr, <, cholesky, zero 
+using TrackingFloats
 
 #test basic operators +, -, *, / for tracking floats
 
-@testset "TrackingFloat.jl" begin
+@testset "TrackingFloats.jl" begin
 
 @test v     == TrackingFloat(4,3)           # which we test using the macro @test
 @test v*v   == TrackingFloat(16, 4) 
