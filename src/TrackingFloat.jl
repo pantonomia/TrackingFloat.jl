@@ -1,4 +1,6 @@
-module TrackingFloat
+module TrackingFloats
+
+export TrackingFloat
 
 using LinearAlgebra
 
@@ -9,7 +11,6 @@ struct TrackingFloat <: AbstractFloat
     big :: Float64
 end 
  
-aux = 0.0 
 
 #Constructor
 aux = 0.0 
@@ -85,6 +86,8 @@ TrackingFloat(v::TrackingFloat) = v
 #promote rule
     
 promote_rule(::Type{T}, ::Type{TrackingFloat}) where {T<:Number} = TrackingFloat
+    
+end
     
     
     
