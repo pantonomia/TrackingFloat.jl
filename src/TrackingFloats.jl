@@ -1,11 +1,20 @@
 module TrackingFloats
 
+
 export TrackingFloat, +, -, *, /, sqrt, <, abs, value, getmax, zero, cholesky, promote_rule
+
+import Base: +, -, *, /, sqrt, <, a, abs, promote, promote_rule
 
 struct TrackingFloat <: AbstractFloat
     new :: Float64
     big :: Float64
 end 
+
+#Constructor
+aux = 0.0 
+TrackingFloat() = TrackingFloat(aux, aux) 
+TrackingFloat(x) = TrackingFloat(x, aux)  
+TrackingFloat(v::TrackingFloat) = v
 
 #Basic methods +, -, *, /
 
