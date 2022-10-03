@@ -32,7 +32,7 @@ AA = A*A'  # Create Positive definite matrix
 AAt = TrackingFloat.(AA) # Convert to TrackingFloat matrix
 
 #solve linear system with backsolve with your trackingfloat
-sol1 = AAt.\bt
+sol1 = AAt\bt
 value.(sol1)
 @test maximum(abs, value.(sol1) - AA.\b) < sqrt(eps())
 
