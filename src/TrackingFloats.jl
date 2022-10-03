@@ -2,8 +2,6 @@ module TrackingFloats
 
 export TrackingFloat, +, -, *, /, sqrt, <, abs, value, getmax, zero, cholesky, promote_rule
 
-using LinearAlgebra
-
 import Base: +, *, -, / , promote, sqrt, qr, <, cholesky, zero
 
 struct TrackingFloat <: AbstractFloat
