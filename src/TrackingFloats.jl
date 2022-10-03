@@ -1,10 +1,10 @@
 module TrackingFloats
 
-export TrackingFloat
+export TrackingFloat, +, -, *, /, sqrt, <, abs, value, getmax, zero, cholesky, promote_rule
 
 using LinearAlgebra
 
-import Base: +, *, -, / , promote, promote_rule, sqrt, qr, <, cholesky, zero
+import Base: +, *, -, / , promote, sqrt, qr, <, cholesky, zero
 
 struct TrackingFloat <: AbstractFloat
     new :: Float64
