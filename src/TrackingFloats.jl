@@ -50,12 +50,7 @@ function sqrt(v::TrackingFloat)
 end
 
 function <(v1::TrackingFloat,v2::TrackingFloat)
-    if v1.new < v2.new
-        w = v1.new
-    else
-        w = v2.new
-    return w
-    end
+    v1.new < v2.new
 end
 
 function -(v::TrackingFloat)
