@@ -4,6 +4,12 @@ using TrackingFloats
 
 #test basic operators +, -, *, / for tracking floats
 
+#Constructor
+aux = 0.0 
+TrackingFloat() = TrackingFloat(aux, aux) 
+TrackingFloat(x) = TrackingFloat(x, aux)  
+TrackingFloat(v::TrackingFloat) = v
+
 @testset "TrackingFloats.jl" begin
 
 @test v     == TrackingFloat(4,3)           # which we test using the macro @test
